@@ -62,7 +62,7 @@ public:
         {
             if(A.at(i) < (long)A.at(i-1) + (long)A.at(i-2)) return A.at(i)+A.at(i-1)+A.at(i-2);
         }
-        return 0;
+        return 0;        
     }
 };
 
