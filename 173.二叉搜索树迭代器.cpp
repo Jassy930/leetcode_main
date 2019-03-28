@@ -53,18 +53,28 @@
  */
 class BSTIterator {
 public:
+    stack<int> is;
     BSTIterator(TreeNode* root) {
-        
+        pushis(root);
+    }
+
+    void pushis(TreeNode* root){
+        if(root == NULL) return;
+        pushis(root->right);
+        is.push(root->val);
+        pushis(root->left);
     }
     
     /** @return the next smallest number */
     int next() {
-        
+        int res = is.top();
+        is.pop();
+        return res;
     }
     
     /** @return whether we have a next smallest number */
     bool hasNext() {
-        
+        return !is.empty();
     }
 };
 

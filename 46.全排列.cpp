@@ -27,10 +27,34 @@
  * ]
  * 
  */
-class Solution {
-public:
-    vector<vector<int>> permute(vector<int>& nums) {
-        
+class Solution
+{
+  public:
+    vector<vector<int>> permute(vector<int> &nums)
+    {
+        vector<vector<int>> out;
+        if (nums.size() == 0)
+            return out;
+        vector<int> a;
+        a.push_back(nums.at(0));
+        out.push_back(a);
+        for (int i = 1; i < nums.size(); i++)
+        {
+            vector<vector<int>> oo;
+            for (int k = 0; k < out.size(); k++)
+            {
+                for (int j = 0; j < out.at(out.size()-1).size(); j++)
+                {
+                    vector<int> vv(out.at(k));
+                    vv.insert(vv.begin()+j, nums.at(i));
+                    oo.push_back(vv);
+                }
+                out.at(k).push_back(nums.at(i));
+                oo.push_back(out.at(k));
+            }
+            out.clear();
+            out = oo;
+        }
+        return out;
     }
 };
-
