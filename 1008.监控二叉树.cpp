@@ -73,46 +73,46 @@ class Solution
     }
 };
 
-/*
-class Solution
-{
-  public:
-    vector<TreeNode *> TNs;
 
-    TreeNode *bstFromPreorder(vector<int> &preorder)
-    {
-        if (preorder.size() == 0)
-            return NULL;
-        TreeNode *root = new TreeNode(preorder.at(0));
-        TNs.push_back(root);
-        for (int i = 1; i < preorder.size(); i++)
-        {
-            if (preorder.at(i) < TNs.back()->val)
-            {
-                TNs.back()->left = new TreeNode(preorder.at(i));
-                TNs.push_back(TNs.back()->left);
-            }
-            else
-            {
-                int k = TNs.size() - 1;
-                if (k == 0 || (k > 0 && TNs.at(k)->val > TNs.at(k - 1)->val))
-                {
-                    TNs.back()->right = new TreeNode(preorder.at(i));
-                    TNs.push_back(TNs.back()->right);
-                }
-                else
-                {
-                    while (k > 0 && TNs.at(k - 1)->val < preorder.at(i) && TNs.at(k)->val < TNs.at(k - 1)->val)
-                    {
-                        TNs.erase(TNs.begin() + TNs.size() - 1);
-                        k--;
-                    }
-                    TNs.back()->right = new TreeNode(preorder.at(i));
-                    TNs.push_back(TNs.back()->right);
-                }
-            }
-        }
-        return root;
-    }
-};
-*/
+// class Solution
+// {
+//   public:
+//     vector<TreeNode *> TNs;
+
+//     TreeNode *bstFromPreorder(vector<int> &preorder)
+//     {
+//         if (preorder.size() == 0)
+//             return NULL;
+//         TreeNode *root = new TreeNode(preorder.at(0));
+//         TNs.push_back(root);
+//         for (int i = 1; i < preorder.size(); i++)
+//         {
+//             if (preorder.at(i) < TNs.back()->val)
+//             {
+//                 TNs.back()->left = new TreeNode(preorder.at(i));
+//                 TNs.push_back(TNs.back()->left);
+//             }
+//             else
+//             {
+//                 int k = TNs.size() - 1;
+//                 if (k == 0 || (k > 0 && TNs.at(k)->val > TNs.at(k - 1)->val))
+//                 {
+//                     TNs.back()->right = new TreeNode(preorder.at(i));
+//                     TNs.push_back(TNs.back()->right);
+//                 }
+//                 else
+//                 {
+//                     while (k > 0 && TNs.at(k - 1)->val < preorder.at(i) && TNs.at(k)->val < TNs.at(k - 1)->val)
+//                     {
+//                         TNs.erase(TNs.begin() + TNs.size() - 1);
+//                         k--;
+//                     }
+//                     TNs.back()->right = new TreeNode(preorder.at(i));
+//                     TNs.push_back(TNs.back()->right);
+//                 }
+//             }
+//         }
+//         return root;
+//     }
+// };
+
