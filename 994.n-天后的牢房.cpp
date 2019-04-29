@@ -61,7 +61,52 @@
 class Solution {
 public:
     int orangesRotting(vector<vector<int>>& grid) {
+        int out = 0;
+        int m = grid.size();
+        int n = grid.at(0).size();
         
+        while(true)
+        {
+            int flag = 0;
+            int num = 0;
+            vector<int> v(n);
+            vector<vector<int>> vv(m,v);
+            for(int i=0; i<grid.size(); i++)
+            {
+                for(int k=0; k<grid.at(0).size(); k++)
+                {
+                    if(grid.at(i).at(k) == 2)
+                    {
+                        if(isinside(i-1, k, m, n) && grid.at(i-1).at(k) == 1) {vv.at(i-1).at(k)=1; flag++;}
+                        if(isinside(i+1, k, m, n) && grid.at(i+1).at(k) == 1) {vv.at(i+1).at(k)=1; flag++;}
+                        if(isinside(i, k-1, m, n) && grid.at(i).at(k-1) == 1) {vv.at(i).at(k-1)=1; flag++;}
+                        if(isinside(i, k+1, m, n) && grid.at(i).at(k+1) == 1) {vv.at(i).at(k+1)=1; flag++;}
+                    }
+                    else if(grid.at(i).at(k) == 1)
+                    {
+                        num++;
+                    }
+                }
+            }
+            for(int i=0; i<m; i++)
+            {
+                for(int k=0; k<n; k++)
+                {
+                    if(vv.at(i).at(k) == 1)
+                        grid.at(i).at(k) = 2;
+                }
+            }
+            if(flag == 0 && num != 0) return -1;
+            else if(flag == 0) return out;
+            out++;
+        }
+        
+    }
+    
+    bool isinside(int i, int k, int m, int n)
+    {
+        if(i>=0 && i<m && k>=0 && k<n) return true;
+        return false;
     }
 };
 
